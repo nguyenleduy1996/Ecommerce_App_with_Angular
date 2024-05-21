@@ -1,0 +1,108 @@
+<div class="row">
+    <div [ngClass]="isSidePaneVisible? 'col-8':'col-12'" class="col-8">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">
+                       New products List
+                    </div>
+                    <div class="col-6 text-end">
+                        <button (click)="openSidePanel()" class="btn btn-sm btn-success">new</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <div class="card-body">
+                              <h4 class="card-title">John Doe</h4>
+                              <p class="card-text">Some example text.</p>
+                              <a href="#" class="btn btn-primary">See Profile</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="col-4" *ngIf ="isSidePaneVisible">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">
+                       New products List
+                    </div>
+                    <div class="col-6 text-end">
+                        <button (click)="closeSidepanel()" class="btn btn-sm btn-success">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">SKU</label>
+                        <input [(ngModel)]="productObj.productSku" type="text" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Name</label>
+                        <input [(ngModel)]="productObj.productName" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">Short Name</label>
+                        <input [(ngModel)]="productObj.productShortName" type="text" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Price</label>
+                        <input [(ngModel)]="productObj.productPrice" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">category</label>
+                        <input [(ngModel)]="productObj.categoryId" type="text" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Delivery Time Span</label>
+                        <input [(ngModel)]="productObj.deliveryTimeSpan" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Image Url</label>
+                        <input [(ngModel)]="productObj.productImageUrl" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Product Description</label>
+                        <textarea rows="4" [(ngModel)]="productObj.productDescription" type="text" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
