@@ -13,33 +13,14 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-3" *ngFor="let product of productsList">
                         <div class="card" style="width:400px">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <img class="card-img-top" [src]="product.productImageUrl" alt="Card image">
                             <div class="card-body">
-                              <h4 class="card-title">John Doe</h4>
-                              <p class="card-text">Some example text.</p>
-                              <a href="#" class="btn btn-primary">See Profile</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card" style="width:400px">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                            <div class="card-body">
-                              <h4 class="card-title">John Doe</h4>
-                              <p class="card-text">Some example text.</p>
-                              <a href="#" class="btn btn-primary">See Profile</a>
-                            </div>
-                          </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card" style="width:400px">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                            <div class="card-body">
-                              <h4 class="card-title">John Doe</h4>
-                              <p class="card-text">Some example text.</p>
-                              <a href="#" class="btn btn-primary">See Profile</a>
+                              <h4 class="card-title">{{product.productName}}</h4>
+                              <p class="card-text">{{product.categoryName}}</p>
+                              <a (click)="onEdit(product)" class="btn btn-primary">Edit</a>
+                              <a (click)="onDelete(product)" class="btn btn-danger mx-2">Delete</a>
                             </div>
                           </div>
                     </div>
@@ -83,7 +64,10 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">category</label>
-                        <input [(ngModel)]="productObj.categoryId" type="text" class="form-control">
+                        <select [(ngModel)]="productObj.categoryId" class="form-select" name="categoryId" required>
+                            <option value="null" disabled>Select Category</option>
+                            <option *ngFor="let cate of categoryList" [value]="cate.categoryId"> {{cate.categoryName}}</option>
+                        </select>
                     </div>
                     <div class="col-6">
                         <label for="">Delivery Time Span</label>
@@ -100,6 +84,15 @@
                     <div class="col-12">
                         <label for="">Product Description</label>
                         <textarea rows="4" [(ngModel)]="productObj.productDescription" type="text" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-6">
+                        <button class="btn btn-success  text-center">reest</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn btn-success" *ngIf="productObj.productId ==0" (click)="onSave()">create Products</button>
+                        <button class="btn btn-primary" *ngIf="productObj.productId !==0" (click)="onUpdate()">Update Products</button>
                     </div>
                 </div>
             </div> 
